@@ -7,6 +7,12 @@ const globalError=require('./middlewares/errorMiddleware')
 const ApiError=require('./utils/apiError')
 const userRoutes=require('./routes/userRoutes')
 const authRoutes=require('./routes/authRoues')
+const catalogueRoutes=require('./routes/catalogueRoutes')
+const domaineRoutes=require('./routes/domaineRoutes')
+const courRoutes=require('./routes/courRoutes')
+const chapitreRoutes=require('./routes/chapitreRoutes')
+const leconRoutes=require('./routes/leconRoutes')
+const videoRoutes=require('./routes/videoRoutes')
 
 
 //connection database
@@ -24,6 +30,12 @@ if(process.env.NODE_ENV === 'dev')
 //route
 app.use('/api/users',userRoutes);
 app.use('/api/auth',authRoutes);
+app.use('/api/catalogues',catalogueRoutes);
+app.use('/api/domaines',domaineRoutes);
+app.use('/api/cours',courRoutes);
+app.use('/api/chapitres',chapitreRoutes);
+app.use('/api/lecons',leconRoutes);
+app.use('/api/videos',videoRoutes);
 app.get('/',(req,res) => {res.send('route API')});
 
 app.all("*",(req,res,next)=>{
