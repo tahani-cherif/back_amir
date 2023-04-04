@@ -16,6 +16,16 @@ const domaineShema=new mongoose.Schema(
             type:mongoose.Schema.ObjectId,
             ref:'catalogue',
             require:[true,'id_catalogue require']
+        },
+        image:{
+            type:String,
+            trim:true,
+            require:[true,'image require']
+        },
+        icon:{
+            type:String,
+            trim:true,
+            require:[true,'icon require']
         }
     },{timestamps:true}
 );

@@ -33,7 +33,11 @@ exports.getcatalogue = asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.createcatalogue=asyncHandler(async(req,res)=>{
     const body=req.body
-    const catalogues=await cataloguemodel.create(body)
+    const catalogues=await cataloguemodel.create({
+      name_catalogue:body.name_catalogue,
+      college_year:body.college_year,
+      image:req.file.path
+    })
      res.status(201).json({data:catalogues})
    
 });

@@ -1,0 +1,1318 @@
+{
+	"info": {
+		"_postman_id": "17698a96-6ccc-43c9-b732-1de3e87da425",
+		"name": "back_amir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19871662"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get all user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/users/6427808abf83035b10cb7075",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"6427808abf83035b10cb7075"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/users/6427808abf83035b10cb7075",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"6427808abf83035b10cb7075"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user or passwords",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"last_name\":\"ff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/64278cf5df1d7bc2850bd580",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"64278cf5df1d7bc2850bd580"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update password user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courrentpassword\":\"12345678\",\r\n    \"password\":\"testtest\",\r\n    \"passwordconfirm\":\"testtest\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/changepassword/64278e3ce04ddaff9373dd92",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"changepassword",
+								"64278e3ce04ddaff9373dd92"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"last_name\":\"cherif\",\r\n    \"first_name\":\"tahani\",\r\n    \"email\":\"cheriaxhddanmmhhi92@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"enseigne\",\r\n    \"passwordconfirm\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalogue",
+			"item": [
+				{
+					"name": "get all catalogue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get catalogue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642aba8dd15e9d28ab6cb9b8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642aba8dd15e9d28ab6cb9b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete catalogue",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642aba8dd15e9d28ab6cb9b8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642aba8dd15e9d28ab6cb9b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update catalogue",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_catalogue\":\"ff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642aba8dd15e9d28ab6cb9b8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642aba8dd15e9d28ab6cb9b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create catalogue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_catalogue\":\"test23\",\r\n    \"college_year\":\"2022/20023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/catalogues",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "domaine",
+			"item": [
+				{
+					"name": "get all domaine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/domaines",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"domaines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get domaine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/domaines/642ac36e1ab80ea39e9d733a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"domaines",
+								"642ac36e1ab80ea39e9d733a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete domaine",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/domaines/642ac36e1ab80ea39e9d733a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"domaines",
+								"642ac36e1ab80ea39e9d733a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update domaine",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_domain\":\"ff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/domaines/642ac36e1ab80ea39e9d733a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"domaines",
+								"642ac36e1ab80ea39e9d733a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create domaine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_domain\":\"aa\",\r\n    \"certificate\":\"certif\",\r\n    \"id_catalogue\":\"642ac30e988861ab32acfbed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/domaines",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"domaines"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cour",
+			"item": [
+				{
+					"name": "get all cour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/cours",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cours"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/cours/642ace6ea06fcb46ce018d9a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cours",
+								"642ace6ea06fcb46ce018d9a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cour",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/cours/642ace6ea06fcb46ce018d9a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cours",
+								"642ace6ea06fcb46ce018d9a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update cour",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name_cour\":\"aabb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/cours/642ace6ea06fcb46ce018d9a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cours",
+								"642ace6ea06fcb46ce018d9a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create cour",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_cour\":\"aa\",\r\n    \"description_cour\":\"certif\",\r\n    \"id_domaine\":\"642ac3a0103617df53051295\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/cours",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cours"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chapitre",
+			"item": [
+				{
+					"name": "get all chapitre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/chapitres",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chapitres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get chapitre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/chapitres/642add1c96d0cb3eb421f031",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chapitres",
+								"642add1c96d0cb3eb421f031"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete chapitres",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/chapitres/642add1c96d0cb3eb421f031",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chapitres",
+								"642add1c96d0cb3eb421f031"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update chapitre",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"title\":\"aabb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/chapitres/642add1c96d0cb3eb421f031",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chapitres",
+								"642add1c96d0cb3eb421f031"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create chapitre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\":1,\r\n    \"title\":\"certif\",\r\n    \"contenu\":\"test test\",\r\n    \"id_cour\":\"642aceb0a06fcb46ce018da2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/chapitres",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chapitres"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lecons",
+			"item": [
+				{
+					"name": "get all lecons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/lecons",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lecons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get lecons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/lecons/642ae6f62d027393b0833ebe",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lecons",
+								"642ae6f62d027393b0833ebe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete lecons",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/lecons/642ae6f62d027393b0833ebe",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lecons",
+								"642ae6f62d027393b0833ebe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update lecons",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name\":\"aabb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/lecons/642ae6f62d027393b0833ebe",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lecons",
+								"642ae6f62d027393b0833ebe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create lecons",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\":1,\r\n    \"name\":\"certif\",\r\n    \"description\":\"test test\",\r\n    \"id_chapitre\":\"642addfa96d0cb3eb421f03b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/lecons",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lecons"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "video",
+			"item": [
+				{
+					"name": "get all video",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get viddeo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/videos/642aedb92b581bc4c6eb3224",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"videos",
+								"642aedb92b581bc4c6eb3224"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete video",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/videos/642aedb92b581bc4c6eb3224",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"videos",
+								"642aedb92b581bc4c6eb3224"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update video",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"number\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/videos/642aedb92b581bc4c6eb3224",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"videos",
+								"642aedb92b581bc4c6eb3224"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create video",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\":1,\r\n    \"url\":\"https://www.youtube.com/watch?v=VuNIsY6JdUw&list=RDMM&index=19\",\r\n    \"time\":80,\r\n    \"id_lecons\":\"642ae74c2d027393b0833ec7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authentification",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"last_name\":\"cherif\",\r\n    \"first_name\":\"tahani\",\r\n    \"email\":\"cheriaxhddDDanmmhhi92@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"enseigne\",\r\n    \"passwordconfirm\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cheriaxhddDDanmmhhi92@gmail.com\",\r\n    \"password\":\"1234567fggg8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalogue/domaine",
+			"item": [
+				{
+					"name": "get all domaine d'un category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642abaf58fbdb9b4e691ed11/domaines",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642abaf58fbdb9b4e691ed11",
+								"domaines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get domaine d'un category Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642abaf58fbdb9b4e691ed11/domaines/642ac3a0103617df53051295",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642abaf58fbdb9b4e691ed11",
+								"domaines",
+								"642ac3a0103617df53051295"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalogue/domaine/cour",
+			"item": [
+				{
+					"name": "get all cour d'un domaine d'un category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642abaf58fbdb9b4e691ed11/domaines/642ac3a0103617df53051295/cours",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642abaf58fbdb9b4e691ed11",
+								"domaines",
+								"642ac3a0103617df53051295",
+								"cours"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all cour d'un domaine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/domaines/642ac3a0103617df53051295/cours",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"domaines",
+								"642ac3a0103617df53051295",
+								"cours"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cour domaine d'un domaine d'un category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642abaf58fbdb9b4e691ed11/domaines/642ac3a0103617df53051295/cours/642aceb0a06fcb46ce018da2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642abaf58fbdb9b4e691ed11",
+								"domaines",
+								"642ac3a0103617df53051295",
+								"cours",
+								"642aceb0a06fcb46ce018da2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cour domaine d'un domaine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/domaines/642ac3a0103617df53051295/cours/642aceb0a06fcb46ce018da2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"domaines",
+								"642ac3a0103617df53051295",
+								"cours",
+								"642aceb0a06fcb46ce018da2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalogue/domaine/cour/chapitre",
+			"item": [
+				{
+					"name": "get all chapitre d'un cour d'un domaine d'un category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642abaf58fbdb9b4e691ed11/domaines/642ac3a0103617df53051295/cours/642aceb0a06fcb46ce018da2/chapitres",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642abaf58fbdb9b4e691ed11",
+								"domaines",
+								"642ac3a0103617df53051295",
+								"cours",
+								"642aceb0a06fcb46ce018da2",
+								"chapitres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all chapitred'un cour",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/cours/642aceb0a06fcb46ce018da2/chapitres",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cours",
+								"642aceb0a06fcb46ce018da2",
+								"chapitres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cour domaine d'un domaine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/cours/642aceb0a06fcb46ce018da2/chapitres/642addfa96d0cb3eb421f03b",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cours",
+								"642aceb0a06fcb46ce018da2",
+								"chapitres",
+								"642addfa96d0cb3eb421f03b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalogue/domaine/cour/chapitre/lecons",
+			"item": [
+				{
+					"name": "get all lecons d'un  chapitre d'un cour d'un domaine d'un category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642abaf58fbdb9b4e691ed11/domaines/642ac3a0103617df53051295/cours/642aceb0a06fcb46ce018da2/chapitres/642addfa96d0cb3eb421f03b/lecons",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642abaf58fbdb9b4e691ed11",
+								"domaines",
+								"642ac3a0103617df53051295",
+								"cours",
+								"642aceb0a06fcb46ce018da2",
+								"chapitres",
+								"642addfa96d0cb3eb421f03b",
+								"lecons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all lecon d'un chapitre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/chapitres/642addfa96d0cb3eb421f03b/lecons",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chapitres",
+								"642addfa96d0cb3eb421f03b",
+								"lecons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get lecons d'un chapitre donee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/chapitres/642addfa96d0cb3eb421f03b/lecons/642ae74c2d027393b0833ec7",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chapitres",
+								"642addfa96d0cb3eb421f03b",
+								"lecons",
+								"642ae74c2d027393b0833ec7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalogue/domaine/cour/chapitre/lecons/video",
+			"item": [
+				{
+					"name": "get all video d'un  lecons d'un  chapitre d'un cour d'un domaine d'un category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/catalogues/642abaf58fbdb9b4e691ed11/domaines/642ac3a0103617df53051295/cours/642aceb0a06fcb46ce018da2/chapitres/642addfa96d0cb3eb421f03b/lecons/642ae74c2d027393b0833ec7/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"catalogues",
+								"642abaf58fbdb9b4e691ed11",
+								"domaines",
+								"642ac3a0103617df53051295",
+								"cours",
+								"642aceb0a06fcb46ce018da2",
+								"chapitres",
+								"642addfa96d0cb3eb421f03b",
+								"lecons",
+								"642ae74c2d027393b0833ec7",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all video d'un lecon",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/lecons/642ae74c2d027393b0833ec7/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lecons",
+								"642ae74c2d027393b0833ec7",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get video d'un lecons donee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/lecons/642ae74c2d027393b0833ec7/videos/642aedf52b581bc4c6eb322a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"lecons",
+								"642ae74c2d027393b0833ec7",
+								"videos",
+								"642aedf52b581bc4c6eb322a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

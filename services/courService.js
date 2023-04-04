@@ -33,7 +33,12 @@ exports.getcour = asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.createcour=asyncHandler(async(req,res)=>{
     const body=req.body
-    const cours=await courmodel.create(body)
+    const cours=await courmodel.create({
+      name_cour:body.name_cour,
+      description_cour:body.description_cour,
+      id_domaine:body.id_domaine,
+      image:req.file.path
+    })
      res.status(201).json({data:cours})
    
 });

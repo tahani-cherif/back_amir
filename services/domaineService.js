@@ -33,7 +33,13 @@ exports.getdomaine = asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.createdomaine=asyncHandler(async(req,res)=>{
     const body=req.body
-    const domaines=await domainemodel.create(body)
+    const domaines=await domainemodel.create({
+      name_domain:body.name_domain,
+      certificate:body.certificate,
+      id_catalogue:body.id_catalogue,
+      image:req.files['image'][0].path,
+      icon:req.files['icon'][0].path,
+    })
      res.status(201).json({data:domaines})
    
 });

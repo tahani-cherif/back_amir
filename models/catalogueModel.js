@@ -12,6 +12,11 @@ const catalogueShema=new mongoose.Schema(
             trim:true,
             require:[true,'college_year require']
         },
+        image:{
+            type:String,
+            trim:true,
+            require:[true,'image require']
+        }
     },{timestamps:true}
 );
 

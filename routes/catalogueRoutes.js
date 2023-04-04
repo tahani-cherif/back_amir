@@ -12,13 +12,13 @@ const {getcatalogues,
         updatecatalogue,
         deletecatalogue,
     }=require('../services/catalogueService');
-
+const {upload}=require('../middlewares/imageMiddmeware')
 const domaine =require('./domaineRoutes');
 const router=express.Router();
 
 router.use('/:catalogueid/domaines',domaine);
 router.route('/').get(getcatalogues)
-                 .post(createcatalogueValidator,createcatalogue);
+                 .post(upload('./image/catalogue').single('image'),createcatalogueValidator,createcatalogue);
 
 router.route('/:id').get(getcatalogueValidator,getcatalogue)
                     .put(updatecatalogueValidator,updatecatalogue)

@@ -14,6 +14,8 @@ const {getdomaines,
     }=require('../services/domaineService');
 
 const cour =require('./courRoutes');
+const {upload}=require('../middlewares/imageMiddmeware')
+
 //mergeParams : allow us to access parameter on other routers
 const router=express.Router({mergeParams: true});
 
@@ -21,7 +23,10 @@ const router=express.Router({mergeParams: true});
 router.use('/:domainesid/cours',cour);
 
 router.route('/').get(getdomaines)
-                 .post(createdomaineValidator,createdomaine);
+                 .post(upload('./image/domaine').fields([
+                     { name: 'image', maxCount: 1 },
+                     { name: 'icon', maxCount: 1 }
+                 ]),createdomaineValidator,createdomaine);
 
 router.route('/:id').get(getdomaineValidator,getdomaine)
                     .put(updatedomaineValidator,updatedomaine)

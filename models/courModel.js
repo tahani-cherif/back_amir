@@ -16,7 +16,12 @@ const courShema=new mongoose.Schema(
             type:mongoose.Schema.ObjectId,
             ref:'domaine',
             require:[true,'id_domaine require']
-        }
+        },
+        image:{
+            type:String,
+            trim:true,
+            require:[true,'image require']
+        },
 
     },{timestamps:true}
 );

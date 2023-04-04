@@ -13,6 +13,8 @@ const {getcours,
         deletecour,
     }=require('../services/courService');
 
+const {upload}=require('../middlewares/imageMiddmeware')
+
 //mergeParams : allow us to access parameter on other routers
 const router=express.Router({mergeParams: true});
  const chapitre =require('./chapitreRoutes');
@@ -20,7 +22,7 @@ const router=express.Router({mergeParams: true});
 router.use('/:courid/chapitres',chapitre);
 
 router.route('/').get(getcours)
-                 .post(createcourValidator,createcour);
+                 .post(upload('./image/cour').single('image'),createcourValidator,createcour);
 
 router.route('/:id').get(getcourValidator,getcour)
                     .put(updatecourValidator,updatecour)
