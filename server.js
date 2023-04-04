@@ -35,7 +35,6 @@ app.all("*",(req,res,next)=>{
 
 // Global error handling middleware for express
 app.use(globalError);
-
 const PORT=process.env.PORT || 8000;
 app.listen(PORT,
            console.log("App running on port 8000"));
