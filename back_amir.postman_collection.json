@@ -254,13 +254,24 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name_catalogue\":\"test23\",\r\n    \"college_year\":\"2022/20023\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name_catalogue",
+									"value": "tttt",
+									"type": "text"
+								},
+								{
+									"key": "college_year",
+									"value": "2021/2022",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Downloads/DCTT (4).jpg"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "localhost:8000/api/catalogues",
@@ -375,13 +386,34 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name_domain\":\"aa\",\r\n    \"certificate\":\"certif\",\r\n    \"id_catalogue\":\"642ac30e988861ab32acfbed\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name_domain",
+									"value": "test1",
+									"type": "text"
+								},
+								{
+									"key": "certificate",
+									"value": "test1",
+									"type": "text"
+								},
+								{
+									"key": "id_catalogue",
+									"value": "642ac30e988861ab32acfbed",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Downloads/DCTT (4).jpg"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Downloads/DCTT (4).jpg"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "localhost:8000/api/domaines",
@@ -496,13 +528,29 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name_cour\":\"aa\",\r\n    \"description_cour\":\"certif\",\r\n    \"id_domaine\":\"642ac3a0103617df53051295\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name_cour",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "description_cour",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "id_domaine",
+									"value": "642ac3a0103617df53051295",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Downloads/DCTT (4).jpg"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "localhost:8000/api/cours",
