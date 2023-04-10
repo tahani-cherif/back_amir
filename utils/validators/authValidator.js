@@ -35,3 +35,16 @@ exports.loginValidator = [
                      .isLength({ min: 8}).withMessage('Password must be at least 6 characters'),
     validatorMiddleware,
   ];
+
+  exports.EnvoyerEmailValidator=[
+    check('email').notEmpty().withMessage('you must enter your email')
+                  .isEmail().withMessage('must be fomrat email')
+                  .custom((val) =>
+                    User.findOne({ email: val }).then((user) => {
+                      if (!user) {
+                      return Promise.reject(new Error('E-mail not found'));
+                      }
+                  })),
+    check('OTP').notEmpty().withMessage('you must enter your code otp'),             
+    validatorMiddleware,
+];

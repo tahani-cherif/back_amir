@@ -87,3 +87,18 @@ exports.changeuserpassword=asyncHandler(async(req,res)=>{
         }
       res.status(200).json({data: users});  
 })
+
+// @desc    update password
+// @route   PUT api/users/passwordrecovery
+// @access  Private
+exports.passwordrecovery=asyncHandler(async(req,res)=>{
+  const users = await usermodel.findOneAndUpdate(
+      {email:req.body.email},
+      {password:await bcrypt.hash(req.body.password,12)},
+      {new:true})
+      if(!users)
+      {
+        return   next(new ApiError(`users not found for this email ${req.body.email}`,404)); 
+      }
+    res.status(200).json({data: users});  
+})

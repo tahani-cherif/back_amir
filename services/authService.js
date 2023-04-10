@@ -3,6 +3,7 @@ const ApiError=require('../utils/apiError')
 const usermodel=require('../models/userModel')
 const jwt = require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
+const nodemailer = require("nodemailer");
 
 
 // @desc    signup
@@ -46,3 +47,55 @@ exports.login = asyncHandler(async (req, res, next) => {
     // 4) send response to client side
     res.status(200).json({ data: user, token });
   });
+
+
+// @desc    RÉCUPÉRATION DE MOT DE PASSE
+// @route   GET /api/auth/passwordrecovery
+// @access  Public
+exports.sendEmail=(req,res,next)=> {
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'dzagence.responsable@gmail.com',
+      pass: 'tganrframyvwatfc',
+    },
+  });
+  
+ const mail_configs = {
+      from:"dzagence.responsable@gmail.com",
+      to:req.body.email,
+      subject: "RÉCUPÉRATION DE MOT DE PASSE",
+      html: `<!DOCTYPE html>
+              <html lang="en" >
+              <head>
+                <meta charset="UTF-8">
+                <title>RÉCUPÉRATION DE MOT DE PASSE</title>
+                
+              </head>
+              <body>
+              <!-- partial:index.partial.html -->
+              <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+                <div style="margin:50px auto;width:70%;padding:20px 0">
+                  <p style="font-size:1.1em">Bonjour,</p>
+                  <p>Utilisez l'OTP suivant pour terminer votre procédure de récupération de mot de passe. OTP est valide pendant 5 minutes</p>
+                  <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${req.body.OTP}</h2>
+                  <hr style="border:none;border-top:1px solid #eee" />
+                </div>
+              </div>
+              <!-- partial -->
+                
+              </body>
+              </html>`,
+      };
+      transporter.sendMail(mail_configs, function (error, info) {
+        if (error) {
+          return  next(new ApiError(error,404)); 
+        }
+        return res.status(200).json({
+          success: true,
+          data: 'Email sent',
+        });
+      });
+  }

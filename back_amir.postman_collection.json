@@ -128,6 +128,35 @@
 					"response": []
 				},
 				{
+					"name": "forget password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cheriftahani92@gmail.com\",\r\n    \"password\":\"testtest\",\r\n    \"passwordconfirm\":\"testtest\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/test",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create user",
 					"request": {
 						"method": "POST",
@@ -135,6 +164,34 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"last_name\":\"cherif\",\r\n    \"first_name\":\"tahani\",\r\n    \"email\":\"cheriaxhddanmmhhi92@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"enseigne\",\r\n    \"passwordconfirm\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cheriftahani92@gmail.com\",\r\n    \"password\":\"testtest2\",\r\n    \"passwordconfirm\":\"testtest2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -964,13 +1021,13 @@
 					"response": []
 				},
 				{
-					"name": "signup Copy",
+					"name": "login",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"cheriaxhddDDanmmhhi92@gmail.com\",\r\n    \"password\":\"1234567fggg8\"\r\n}",
+							"raw": "{\r\n    \"email\":\"cheriftahani92@gmail.com\",\r\n    \"password\":\"testtest2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -987,6 +1044,35 @@
 								"api",
 								"auth",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PASSWORD RECOVERY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cheriftahani92@gmail.com\",\r\n    \"OTP\":\"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/auth/passwordrecovery",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"passwordrecovery"
 							]
 						}
 					},
