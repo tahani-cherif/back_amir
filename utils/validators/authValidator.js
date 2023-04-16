@@ -24,7 +24,7 @@ exports.signupValidator=[
                         return true;
                      }),
     check('passwordconfirm').notEmpty().withMessage('passwordconfirm required'),
-    check('role').isIn(['eleve','enseigne']).withMessage('role must be eleve | admin | enseigne'),                 
+    check('role').isIn(['eleve','admin','enseigne']).withMessage('role must be eleve | admin | enseigne'),                 
 
     validatorMiddleware,
 ];
