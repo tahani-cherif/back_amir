@@ -1,4 +1,5 @@
 const  mongoose=require('mongoose');
+const videoModel=require('../models/videoModel')
 
 const leconShema=new mongoose.Schema(
     {
@@ -25,6 +26,9 @@ const leconShema=new mongoose.Schema(
     },{timestamps:true}
 );
 
-
+leconShema.pre('remove', function(next) {
+    console.log('Removing!');
+    next()
+  });
 const lecon=mongoose.model('lecons',leconShema);
 module.exports=lecon;
