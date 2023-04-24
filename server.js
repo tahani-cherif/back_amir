@@ -13,6 +13,8 @@ const courRoutes=require('./routes/courRoutes')
 const chapitreRoutes=require('./routes/chapitreRoutes')
 const leconRoutes=require('./routes/leconRoutes')
 const videoRoutes=require('./routes/videoRoutes')
+const quizzRoutes=require('./routes/quizzRoutes')
+const sessionEleveRoutes=require('./routes/sessionEleveRoutes')
 
 
 //connection database
@@ -36,6 +38,8 @@ app.use('/api/cours',courRoutes);
 app.use('/api/chapitres',chapitreRoutes);
 app.use('/api/lecons',leconRoutes);
 app.use('/api/videos',videoRoutes);
+app.use('/api/quizzs',quizzRoutes);
+app.use('/api/sessionEleves',sessionEleveRoutes);
 app.get('/',(req,res) => {res.send('route API')});
 
 app.all("*",(req,res,next)=>{

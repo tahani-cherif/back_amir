@@ -1,4 +1,5 @@
 const  mongoose=require('mongoose');
+const leconModel=require('../models/leconModel')
 
 const videoShema=new mongoose.Schema(
     {
@@ -24,7 +25,6 @@ const videoShema=new mongoose.Schema(
 
     },{timestamps:true}
 );
-
 
 const video=mongoose.model('video',videoShema);
 module.exports=video;
