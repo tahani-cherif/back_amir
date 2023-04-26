@@ -14,7 +14,7 @@ const domaineShema=new mongoose.Schema(
         },
         id_catalogue:{
             type:mongoose.Schema.ObjectId,
-            ref:'catalogue',
+            ref:'Catalogue',
             require:[true,'id_catalogue require']
         },
         image:{

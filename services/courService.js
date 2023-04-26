@@ -7,13 +7,23 @@ const ApiError=require('../utils/apiError')
 // @route   GET api/cours/
 // @access  Private
 exports.getcours=asyncHandler(async(req,res) => {
+  let filter = {};
+  if (req.filterObj) {
+    filter = req.filterObj;
+  }
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const cours = await courmodel.find({}).skip(skip).limit(limit);
+    const cours = await courmodel.find(filter).skip(skip).limit(limit);
     res.status(200).json({results:cours.length,page,data:cours})
   });
-
+  exports.createFilterObj=(req,res,next) => {
+    let filterObject={};
+    if(req.params.id_domaine) filterObject ={id_domaine:req.params.id_domaine};
+    req.filterObj =filterObject;
+  next();
+  }
+  
 // @desc    Get specific cour by id
 // @route   GET api/cour/:id
 // @access  Private

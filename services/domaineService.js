@@ -7,10 +7,15 @@ const ApiError=require('../utils/apiError')
 // @route   GET api/domaines/
 // @access  Private
 exports.getdomaines=asyncHandler(async(req,res) => {
+  console.log(req.params)
+  let filter = {};
+  if (req.filterObj) {
+    filter = req.filterObj;
+  }
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const domaines = await domainemodel.find({}).skip(skip).limit(limit);
+    const domaines = await domainemodel.find(filter) ;
     res.status(200).json({results:domaines.length,page,data:domaines})
   });
 
@@ -26,6 +31,16 @@ exports.getdomaine = asyncHandler(async(req,res,next)=>{
 }
   res.status(200).json({data: domaines});
 })
+exports.setCatalogueIdToBody=(req,res,next) => {
+  if(!req.body.catalogue) req.body.catalogue = req.params.id_catalogue;
+next();
+}
+exports.createFilterObj=(req,res,next) => {
+  let filterObject={};
+  if(req.params.id_catalogue) filterObject ={id_catalogue:req.params.id_catalogue};
+  req.filterObj =filterObject;
+next();
+}
 
 
 // @desc    Create a new domaine
@@ -38,7 +53,7 @@ exports.createdomaine=asyncHandler(async(req,res)=>{
       certificate:body.certificate,
       id_catalogue:body.id_catalogue,
       image:req.files['image'][0].path,
-      icon:req.files['icon'][0].path,
+      icon:body.icon,
     })
      res.status(201).json({data:domaines})
    

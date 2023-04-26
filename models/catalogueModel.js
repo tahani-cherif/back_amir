@@ -21,5 +21,5 @@ const catalogueShema=new mongoose.Schema(
 );
 
 
-const catalogue=mongoose.model('catalogue',catalogueShema);
+const catalogue=mongoose.model('Catalogue',catalogueShema);
 module.exports=catalogue;

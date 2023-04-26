@@ -11,6 +11,7 @@ const {getcours,
         getcour,
         updatecour,
         deletecour,
+        createFilterObj
     }=require('../services/courService');
 
 const {upload}=require('../middlewares/imageMiddmeware')
@@ -19,9 +20,9 @@ const {upload}=require('../middlewares/imageMiddmeware')
 const router=express.Router({mergeParams: true});
  const chapitre =require('./chapitreRoutes');
 
-router.use('/:courid/chapitres',chapitre);
+router.use('/:id_cour/chapitres',chapitre);
 
-router.route('/').get(getcours)
+router.route('/').get(createFilterObj,getcours)
                  .post(upload('./image/cour').single('image'),createcourValidator,createcour);
 
 router.route('/:id').get(getcourValidator,getcour)

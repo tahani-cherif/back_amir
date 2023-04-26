@@ -11,6 +11,8 @@ const {getdomaines,
         getdomaine,
         updatedomaine,
         deletedomaine,
+        createFilterObj,
+        setCatalogueIdToBody
     }=require('../services/domaineService');
 
 const cour =require('./courRoutes');
@@ -20,10 +22,10 @@ const {upload}=require('../middlewares/imageMiddmeware')
 const router=express.Router({mergeParams: true});
 
 
-router.use('/:domainesid/cours',cour);
+router.use('/:id_domaine/cours',cour);
 
-router.route('/').get(getdomaines)
-                 .post(upload('./image/domaine').fields([
+router.route('/').get(createFilterObj,getdomaines)
+                 .post(setCatalogueIdToBody,upload('./image/domaine').fields([
                      { name: 'image', maxCount: 1 },
                      { name: 'icon', maxCount: 1 }
                  ]),createdomaineValidator,createdomaine);

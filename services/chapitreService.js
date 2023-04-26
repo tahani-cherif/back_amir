@@ -6,14 +6,27 @@ const ApiError=require('../utils/apiError')
 // @desc    Get all chapitre
 // @route   GET api/chapitres/
 // @access  Private
+exports.createFilterObj=(req,res,next) => {
+
+  let filterObject={};
+  if(req.params.id_cour) filterObject ={id_cour:req.params.id_cour};
+  req.filterObj =filterObject;
+next();
+}
+
 exports.getchapitres=asyncHandler(async(req,res) => {
+  console.log(req.params)
+  let filter = {};
+  if (req.filterObj) {
+    filter = req.filterObj;
+  }
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const chapitres = await chapitremodel.find({}).skip(skip).limit(limit);
+    const chapitres = await chapitremodel.find(filter).skip(skip).limit(limit);
     res.status(200).json({results:chapitres.length,page,data:chapitres})
   });
-
+ 
 // @desc    Get specific chapitre by id
 // @route   GET api/chapitre/:id
 // @access  Private

@@ -11,6 +11,7 @@ const {getchapitres,
         getchapitre,
         updatechapitre,
         deletechapitre,
+        createFilterObj
     }=require('../services/chapitreService');
 
 //mergeParams : allow us to access parameter on other routers
@@ -18,9 +19,9 @@ const router=express.Router({mergeParams: true});
 
 const lecons =require('./leconRoutes');
 
-router.use('/:chapitreid/lecons',lecons);
+router.use('/:id_chapitre/lecons',lecons);
 
-router.route('/').get(getchapitres)
+router.route('/').get(createFilterObj,getchapitres)
                  .post(createchapitreValidator,createchapitre);
 
 router.route('/:id').get(getchapitreValidator,getchapitre)

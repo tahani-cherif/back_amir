@@ -16,7 +16,7 @@ const {upload}=require('../middlewares/imageMiddmeware')
 const domaine =require('./domaineRoutes');
 const router=express.Router();
 
-router.use('/:catalogueid/domaines',domaine);
+router.use('/:id_catalogue/domaines',domaine);
 router.route('/').get(getcatalogues)
                  .post(upload('./image/catalogue').single('image'),createcatalogueValidator,createcatalogue);
 

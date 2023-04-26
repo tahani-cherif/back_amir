@@ -7,10 +7,14 @@ const ApiError=require('../utils/apiError')
 // @route   GET api/catalogues/
 // @access  Private
 exports.getcatalogues=asyncHandler(async(req,res) => {
+  let filter = {};
+  if (req.filterObj) {
+    filter = req.filterObj;
+  }
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const catalogues = await cataloguemodel.find({}).skip(skip).limit(limit);
+    const catalogues = await cataloguemodel.find({}).skip(skip);
     res.status(200).json({results:catalogues.length,page,data:catalogues})
   });
 
