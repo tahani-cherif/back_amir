@@ -26,9 +26,11 @@ const leconShema=new mongoose.Schema(
     },{timestamps:true}
 );
 
-leconShema.pre('remove', function(next) {
-    console.log('Removing!');
-    next()
+leconShema.pre('deleteOne',async function(next) {
+    console.log('Removing!',this._conditions._id);
+   const x=await videoModel.deleteMany({id_lecons:this._conditions._id})
+   console.log(x)
+     next()
   });
 const lecon=mongoose.model('lecons',leconShema);
 module.exports=lecon;

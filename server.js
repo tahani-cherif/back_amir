@@ -31,46 +31,45 @@ if(process.env.NODE_ENV === 'dev')
     console.log(`mode:${process.env.NODE_ENV}`);
 }
 // auth with google
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://www.example.com/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['email profile'] }),
-  function(req, res) {
-  console.log("appppppp")
-  });
+// passport.use(new GoogleStrategy({
+//     clientID: process.env.GOOGLE_CLIENT_ID,
+//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL: "http://www.example.com/auth/google/callback"
+//   },
+//   function(accessToken, refreshToken, profile, cb) {
+//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
+//   }
+// ));
+// app.get('/auth/google',
+//   passport.authenticate('google', { scope: ['email profile'] }),
+//   function(req, res) {
+//   console.log("appppppp")
+//   });
 
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Authenticated successfully
-    res.redirect('/');
-  });
-  passport.use(new FacebookStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://www.example.com/auth/google/callback",
-    profileFields:['id', 'name', 'displayname','email']
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
+// app.get('/auth/google/callback',
+//   passport.authenticate('google', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Authenticated successfully
+//     res.redirect('/');
+//   });
+//   passport.use(new FacebookStrategy({
+//     clientID: process.env.GOOGLE_CLIENT_ID,
+//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL: "http://www.example.com/auth/google/callback",
+//     profileFields:['id', 'name', 'displayname','email']
+//   },
+//   function(accessToken, refreshToken, profile, cb) {
+//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
+//   }
+// ));
 // auth with facebook
- app.use(passport.initialize());
- app.use(passport.session());
- app.use(session({secret: 'thisissecretkey'}));
-  Strategy
+//  app.use(passport.initialize());
+//  app.use(passport.session());
+//  app.use(session({secret: 'thisissecretkey'}));
  
 //route
 app.use('/api/users',userRoutes);
