@@ -1,6 +1,6 @@
 version: '3'
 services:
-  node2:
+  node:
     image: node:16
     container_name: node
     restart: always
@@ -14,14 +14,21 @@ services:
       - 4000:8000
     networks:
       - app-network
+  # app:
+  #   container_name: docker-node-mongo
+  #   restart: always
+  #   build: .
+  #   ports:
+  #     - '80:3000'
+  #   external_links:
+  #     - mongo
   mongo:
-    image: mongo
     restart: always
+    container_name: mongo
+    image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: back_amir
-      MONGO_INITDB_ROOT_PASSWORD: H3sz7GrqmXCZEY3x 
-    networks:
-      - node-network
+      MONGO_INITDB_ROOT_PASSWORD: H3sz7GrqmXCZEY3x
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -34,6 +41,7 @@ services:
       - node
     networks:
       - app-network
+ 
 networks:
   app-network:
     driver: bridge 
