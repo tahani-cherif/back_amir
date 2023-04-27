@@ -76,10 +76,11 @@ exports.updatecour =asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.deletecour =asyncHandler(async(req,res,next)=>{
    const {id}=req.params;
-   const cours=await courmodel.findByIdAndDelete(id);
+   const cours=await courmodel.findById(id);
    if(!cours)
     {
       return   next(new ApiError(`cour not found for this id ${id}`,404)); 
     }
+    const deletes=await courmodel.deleteOne({_id:id});
   res.status(204).send();  
 });

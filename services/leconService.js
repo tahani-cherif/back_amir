@@ -10,7 +10,7 @@ exports.getleconss=asyncHandler(async(req,res) => {
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const leconss = await leconsmodel.find({}).skip(skip).limit(limit);
+    const leconss = await leconsmodel.find({})
     console.log()
     res.status(200).json({results:leconss.length,page,data:leconss})
   });
@@ -62,7 +62,6 @@ exports.updatelecons =asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.deletelecons =asyncHandler(async(req,res,next)=>{
    const {id}=req.params;
-  //  const leconss=await leconsmodel.findByIdAndDelete(id);
    const leconss=await leconsmodel.findById(id);
   
    if(!leconss)

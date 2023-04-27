@@ -74,10 +74,11 @@ exports.updatechapitre =asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.deletechapitre =asyncHandler(async(req,res,next)=>{
    const {id}=req.params;
-   const chapitres=await chapitremodel.findByIdAndDelete(id);
+   const chapitres = await chapitremodel.findById(id);
    if(!chapitres)
     {
       return   next(new ApiError(`chapitre not found for this id ${id}`,404)); 
     }
+    const deletes=await chapitremodel.deleteOne({_id:id});
   res.status(204).send();  
 });

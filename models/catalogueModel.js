@@ -1,4 +1,6 @@
 const  mongoose=require('mongoose');
+const domainemodel=require('./domaineModel')
+const ApiError=require('../utils/apiError')
 
 const catalogueShema=new mongoose.Schema(
     {
@@ -20,6 +22,15 @@ const catalogueShema=new mongoose.Schema(
     },{timestamps:true}
 );
 
+catalogueShema.pre('deleteOne',async function(next) {
+    console.log('Removing!',this._conditions._id);
+   const x=await domainemodel.find({catalogueShema:this._conditions._id})
+   if(x)
+   {
+    return   next(new ApiError(`found domaine with id_catalogue ${this._conditions._id} `,404)); 
+   }
+     next()
+  });
 
 const catalogue=mongoose.model('Catalogue',catalogueShema);
 module.exports=catalogue;

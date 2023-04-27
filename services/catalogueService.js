@@ -69,10 +69,11 @@ exports.updatecatalogue =asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.deletecatalogue =asyncHandler(async(req,res,next)=>{
    const {id}=req.params;
-   const catalogues=await cataloguemodel.findByIdAndDelete(id);
+   const catalogues=await cataloguemodel.findById(id);
    if(!catalogues)
     {
       return   next(new ApiError(`catalogue not found for this id ${id}`,404)); 
     }
+    const deletes=await cataloguemodel.deleteOne({_id:id});
   res.status(204).send();  
 });

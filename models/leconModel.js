@@ -1,5 +1,6 @@
 const  mongoose=require('mongoose');
 const videoModel=require('../models/videoModel')
+const ApiError=require('../utils/apiError')
 
 const leconShema=new mongoose.Schema(
     {
@@ -27,10 +28,14 @@ const leconShema=new mongoose.Schema(
 );
 
 leconShema.pre('deleteOne',async function(next) {
-    console.log('Removing!',this._conditions._id);
-   const x=await videoModel.deleteMany({id_lecons:this._conditions._id})
-   console.log(x)
+    console.log('Removing!2',this._conditions._id);
+   const x=await videoModel.find({id_lecons:this._conditions._id})
+   if(x)
+   {
+    return   next(new ApiError(`found video with id_lecons ${this._conditions._id} `,404)); 
+   }
      next()
   });
+
 const lecon=mongoose.model('lecons',leconShema);
 module.exports=lecon;

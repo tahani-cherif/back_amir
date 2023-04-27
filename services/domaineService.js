@@ -82,10 +82,11 @@ exports.updatedomaine =asyncHandler(async(req,res,next)=>{
 // @access  Private
 exports.deletedomaine =asyncHandler(async(req,res,next)=>{
    const {id}=req.params;
-   const domaines=await domainemodel.findByIdAndDelete(id);
+   const domaines=await domainemodel.findById(id);
    if(!domaines)
     {
       return   next(new ApiError(`domaine not found for this id ${id}`,404)); 
     }
+    const deletes=await domainemodel.deleteOne({_id:id});
   res.status(204).send();  
 });

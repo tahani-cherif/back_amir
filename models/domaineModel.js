@@ -1,4 +1,6 @@
 const  mongoose=require('mongoose');
+const ApiError=require('../utils/apiError')
+const courmodel=require('./courModel')
 
 const domaineShema=new mongoose.Schema(
     {
@@ -30,6 +32,15 @@ const domaineShema=new mongoose.Schema(
     },{timestamps:true}
 );
 
+domaineShema.pre('deleteOne',async function(next) {
+    console.log('Removing!',this._conditions._id);
+   const x=await courmodel.find({id_domaine:this._conditions._id})
+   if(x)
+   {
+    return   next(new ApiError(`found cour with id_domaine ${this._conditions._id} `,404)); 
+   }
+     next()
+  });
 
 const domaine=mongoose.model('domaine',domaineShema);
 module.exports=domaine;
