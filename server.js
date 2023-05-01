@@ -86,12 +86,22 @@ app.use('/api/sessionEleves',sessionEleveRoutes);
 app.use('/api/pdfs',pdfRoutes);
 app.get('/',(req,res) => {res.send('route API')});
 
+//static Images Folder
+
+app.use('/image', express.static('./image'))
+//static Images Folder
+
+app.use('/pdf', express.static('./pdf'))
+
 app.all("*",(req,res,next)=>{
     //create error and send it to error handling middleware
     // const error=new Error(`can't find this route : ${req.originalUrl}`);
     // next(error.message);
      next(new ApiError(`can't find this route : ${req.originalUrl}`,400));
 })
+
+
+
 
 // Global error handling middleware for express
 app.use(globalError);
