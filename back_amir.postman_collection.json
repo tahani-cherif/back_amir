@@ -326,7 +326,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/LENOVO/Downloads/DCTT (4).jpg"
+									"src": "/C:/Users/User/Downloads/4859111577_1159a66cd5_o.jpg"
 								}
 							]
 						},
@@ -981,6 +981,380 @@
 							"path": [
 								"api",
 								"videos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pdf",
+			"item": [
+				{
+					"name": "get all pdf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/pdfs",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pdfs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get pdf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/pdfs/6450d60ca4258f3ed0dfff79",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pdfs",
+								"6450d60ca4258f3ed0dfff79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete pdf",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/pdfs/6450d60ca4258f3ed0dfff79",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pdfs",
+								"6450d60ca4258f3ed0dfff79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update pdf",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"number\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/pdfs/6450d60ca4258f3ed0dfff79",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pdfs",
+								"6450d60ca4258f3ed0dfff79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create pdf",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/Downloads/Présentation-PFE.pdf"
+								},
+								{
+									"key": "id_lecons",
+									"value": "6448e6ed39f00592451d9474",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/pdfs",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pdfs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quizz",
+			"item": [
+				{
+					"name": "get all quizz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/quizzs",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quizzs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get quizz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/quizzs/6450d518a4258f3ed0dfff71",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quizzs",
+								"6450d518a4258f3ed0dfff71"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete quizz",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/quizzs/6450d518a4258f3ed0dfff71",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quizzs",
+								"6450d518a4258f3ed0dfff71"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update quizz",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\":[ {\r\n        \"text\": \"2test test ?\",\r\n        \"option\": [\r\n            {\r\n                \"text\": \"tes test test\",\r\n                \"isCorrect\": true\r\n            },\r\n            {\r\n                \"text\": \"tes test test\",\r\n                \"isCorrect\": true\r\n            }\r\n        ]\r\n    },\r\n     {\r\n        \"text\": \"2test test ?\",\r\n        \"option\": [\r\n            {\r\n                \"text\": \"tes test test\",\r\n                \"isCorrect\": true\r\n            },\r\n            {\r\n                \"text\": \"tes test test\",\r\n                \"isCorrect\": true\r\n            }\r\n        ]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/quizzs/6450d518a4258f3ed0dfff71",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quizzs",
+								"6450d518a4258f3ed0dfff71"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create quizz",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\": {\r\n        \"text\": \"2test test ?\",\r\n        \"option\": [\r\n            {\r\n                \"text\": \"tes test test\",\r\n                \"isCorrect\": true\r\n            },\r\n            {\r\n                \"text\": \"tes test test\",\r\n                \"isCorrect\": true\r\n            }\r\n        ]\r\n    },\r\n    \"id_cour\": \"642aceb0a06fcb46ce018da2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/quizzs",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quizzs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session eleve",
+			"item": [
+				{
+					"name": "get all sessioneleve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/sessionEleves",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sessionEleves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get sessioneleve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/sessionEleves/643ea36e020160f326a28bd7",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sessionEleves",
+								"643ea36e020160f326a28bd7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete sessioneleve",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/sessionEleves/64468b08e791c0ecfdba0b8e",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sessionEleves",
+								"64468b08e791c0ecfdba0b8e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update sessioneleve",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n            \"id_cour_terminer\": [   \"6447d604fdfaa4ea95d6446f\"],\r\n            \"id_cour_commencer\": [\r\n             \r\n                \"6447d628fdfaa4ea95d64475\"\r\n            ]\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/sessionEleves/6450d71ca4258f3ed0dfff87",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sessionEleves",
+								"6450d71ca4258f3ed0dfff87"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create sessioneleve",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n            \"id_eleve\": \"643ea36e020160f326a28bd7\",\r\n            \"full_name\": \"Souma Chouchenne\",\r\n            \"id_cour_terminer\": [],\r\n            \"id_cour_commencer\": [\r\n                \"6447d604fdfaa4ea95d6446f\",\r\n                \"6447d628fdfaa4ea95d64475\"\r\n            ],\r\n            \"quizz_terminer\": [\r\n                {\r\n                    \"id_quizz\": \"6446542d630eb9a5f880220a\",\r\n                    \"note\": 15,\r\n                    \"_id\": \"64468b08e791c0ecfdba0b8f\"\r\n                }\r\n            ]\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/sessionEleves",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sessionEleves"
 							]
 						}
 					},

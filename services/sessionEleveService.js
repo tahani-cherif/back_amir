@@ -21,7 +21,8 @@ exports.getsessionEleves=asyncHandler(async(req,res) => {
 exports.getsessionEleve = asyncHandler(async(req,res,next)=>{
   const {id}=req.params; 
   const sessionEleves = await sessionElevemodel.find({id_eleve:id});
-  if(!sessionEleves || sessionEleves!=[])
+  console.log(sessionEleves,!sessionEleves || sessionEleves!=[])
+  if(!sessionEleves || sessionEleves==[])
   {
     return   next(new ApiError(`sessionEleve not found for this id ${id}`,404)); 
 }
