@@ -7,11 +7,11 @@ const quizzShema=new mongoose.Schema(
             require:[true,'question require']
         },
         option:[{
-            type:string,
+            type:String,
             require:[true,'option require']
         }],
         correctanswer:{
-            type:string,
+            type:String,
             require:[true,'correctanswer  require']
         },
         id_cour:{
