@@ -32,12 +32,9 @@ exports.getpdf = asyncHandler(async(req,res,next)=>{
 // @route   POST api/pdfs/
 // @access  Private
 exports.createpdf=asyncHandler(async(req,res)=>{
-    const body=req.body
-    const pdfs=await pdfmodel.create({
-      number:body.number,
-      id_lecons:body.id_lecons,
-      file:req.file.path
-    })
+    let body=req.body
+    body.file=req.file.path;
+    const pdfs=await pdfmodel.create(body)
      res.status(201).json({data:pdfs})
    
 });
