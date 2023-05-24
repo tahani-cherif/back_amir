@@ -23,7 +23,7 @@ exports.getchapitres=asyncHandler(async(req,res) => {
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const chapitres = await chapitremodel.find(filter).skip(skip).limit(limit);
+    const chapitres = await chapitremodel.find(filter);
     res.status(200).json({results:chapitres.length,page,data:chapitres})
   });
  

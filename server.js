@@ -7,7 +7,6 @@ const globalError=require('./middlewares/errorMiddleware')
 const ApiError=require('./utils/apiError')
 const userRoutes=require('./routes/userRoutes')
 const authRoutes=require('./routes/authRoues')
-const catalogueRoutes=require('./routes/catalogueRoutes')
 const domaineRoutes=require('./routes/domaineRoutes')
 const courRoutes=require('./routes/courRoutes')
 const chapitreRoutes=require('./routes/chapitreRoutes')
@@ -20,12 +19,22 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const passport = require('passport');
 const session=require('express-session');
-//connection database
-config_data()
+var http = require("http");
 const app=express()
 
-//middlewares
+
+var server = http.createServer(app);
+var io = require("socket.io")(server);
 app.use(express.json());
+
+//connection database
+config_data()
+
+
+
+
+  
+//middlewares
 if(process.env.NODE_ENV === 'dev')
 {
     app.use(morgan('dev'));
@@ -75,7 +84,6 @@ if(process.env.NODE_ENV === 'dev')
 //route
 app.use('/api/users',userRoutes);
 app.use('/api/auth',authRoutes);
-app.use('/api/catalogues',catalogueRoutes);
 app.use('/api/domaines',domaineRoutes);
 app.use('/api/cours',courRoutes);
 app.use('/api/chapitres',chapitreRoutes);
@@ -85,7 +93,6 @@ app.use('/api/quizzs',quizzRoutes);
 app.use('/api/sessionEleves',sessionEleveRoutes);
 app.use('/api/pdfs',pdfRoutes);
 app.get('/',(req,res) => {res.send('route API')});
-
 //static Images Folder
 
 app.use('/image', express.static('./image'))
@@ -106,8 +113,22 @@ app.all("*",(req,res,next)=>{
 // Global error handling middleware for express
 app.use(globalError);
 const PORT=process.env.PORT || 8000;
-app.listen(PORT,
-           console.log("App running on port 8000"));
+server.listen(PORT, "0.0.0.0", () => {
+    console.log("server started");
+  });
+  global.onlineUsers = new Map();
+  io.on("connection", (socket) => {
+    global.chatSocket = socket;
+    socket.on("add-user", (userId) => {
+      onlineUsers.set(userId, socket.id);
+    });
+  
+    socket.on("send-msg", (data) => {
+      const sendUserSocket = onlineUsers.get(data.to);
+      if (sendUserSocket) {
+        socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+      }
+    });});
 // error handling Rejection outside express
 process.on("unhandledRejection",(err=>{
     console.error(`UnhandledRejection Errors: ${err.name} | ${err.message}`);

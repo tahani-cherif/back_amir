@@ -22,6 +22,16 @@ const videoShema=new mongoose.Schema(
             trim:true,
             require:[true,'number require']
         },
+        title:{
+            type:String,
+            trim:true,
+            require:[true,'title require']
+        },
+        sub_title:{
+            type:String,
+            trim:true,
+            require:[true,'sub-title require']
+        }
 
     },{timestamps:true}
 );

@@ -14,14 +14,14 @@ const {getusers,
         updateuser,
         deleteuser,
         changeuserpassword,
-        passwordrecovery
+        passwordrecovery,getEtudiant
     }=require('../services/userService');
 
 
 const router=express.Router();
 
 router.put('/changepassword/:id',changeuserpasswordvalidate,changeuserpassword);
-
+router.route('/getetudiant').get(getEtudiant)
 router.route('/').get(getusers)
                  .post(createuserValidator,createuser)
                  .put(forgetuserpasswordvalidate,passwordrecovery);

@@ -11,6 +11,7 @@ const {getleconss,
         getlecons,
         updatelecons,
         deletelecons,
+        createFilterObj
     }=require('../services/leconService');
 
 //mergeParams : allow us to access parameter on other routers
@@ -18,9 +19,12 @@ const router=express.Router({mergeParams: true});
 
 const video =require('./videoRoutes');
 
-router.use('/:leconsid/videos',video);
+router.use('/:id_lecons/videos',video);
+const pdf =require('./pdfRoutes');
 
-router.route('/').get(getleconss)
+router.use('/:id_lecons/pdf',pdf);
+
+router.route('/').get(createFilterObj,getleconss)
                  .post(createleconsValidator,createlecons);
 
 router.route('/:id').get(getleconsValidator,getlecons)

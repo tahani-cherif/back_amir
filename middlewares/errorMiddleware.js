@@ -1,5 +1,5 @@
 const globalError=(err,req,res,next)=>{
-    err.statusCode=err.statusCode || 500;
+    err.statusCode=err.statusCode || 500 || 400;
     err.status=err.status || 'error';
     if(process.env.NODE_ENV==='dev')
      {

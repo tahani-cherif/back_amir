@@ -7,12 +7,23 @@ const ApiError=require('../utils/apiError')
 // @route   GET api/pdfs/
 // @access  Private
 exports.getpdfs=asyncHandler(async(req,res) => {
+  let filter = {};
+  if (req.filterObj) {
+    filter = req.filterObj;
+  }
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const pdfs = await pdfmodel.find({}).skip(skip);
+    const pdfs = await pdfmodel.find(filter);
     res.status(200).json({results:pdfs.length,page,data:pdfs})
   });
+  exports.createFilterObj=(req,res,next) => {
+    console.log(req.params)
+       let filterObject={};
+       if(req.params.id_lecons) filterObject ={id_lecons:req.params.id_lecons};
+       req.filterObj =filterObject;
+     next();
+     }
 
 // @desc    Get specific pdf by id
 // @route   GET api/pdf/:id
@@ -36,7 +47,9 @@ exports.createpdf=asyncHandler(async(req,res)=>{
     const pdfs=await pdfmodel.create({
       number:body.number,
       id_lecons:body.id_lecons,
-      file:req.file.path
+      file:req.file.path,
+      title:body.title,
+      sub_title:body.sub_title
     })
      res.status(201).json({data:pdfs})
    

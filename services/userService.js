@@ -11,7 +11,7 @@ exports.getusers=asyncHandler(async(req,res) => {
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const users = await usermodel.find({}).skip(skip).limit(limit);
+    const users = await usermodel.find({});
     res.status(200).json({results:users.length,page,data:users})
   });
 
@@ -26,6 +26,11 @@ exports.getuser = asyncHandler(async(req,res,next)=>{
     return   next(new ApiError(`user not found for this id ${id}`,404)); 
 }
   res.status(200).json({data: users});
+})
+exports.getEtudiant = asyncHandler(async(req,res,next)=>{
+  const users = await usermodel.find({role:"eleve"});
+  res.status(200).json({results:users.length,data:users})
+
 })
 
 

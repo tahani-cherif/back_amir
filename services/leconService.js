@@ -7,13 +7,26 @@ const ApiError=require('../utils/apiError')
 // @route   GET api/lecons/
 // @access  Private
 exports.getleconss=asyncHandler(async(req,res) => {
+  let filter = {};
+  if (req.filterObj) {
+    filter = req.filterObj;
+  }
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const leconss = await leconsmodel.find({})
+    const leconss = await leconsmodel.find(filter)
     console.log()
     res.status(200).json({results:leconss.length,page,data:leconss})
   });
+
+
+  exports.createFilterObj=(req,res,next) => {
+ console.log(req.params)
+    let filterObject={};
+    if(req.params.id_chapitre) filterObject ={id_chapitre:req.params.id_chapitre};
+    req.filterObj =filterObject;
+  next();
+  }
 
 // @desc    Get specific lecons by id
 // @route   GET api/lecons/:id

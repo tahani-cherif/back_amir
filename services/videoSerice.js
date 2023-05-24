@@ -7,12 +7,24 @@ const ApiError=require('../utils/apiError')
 // @route   GET api/videos/
 // @access  Private
 exports.getvideos=asyncHandler(async(req,res) => {
+  let filter = {};
+  if (req.filterObj) {
+    filter = req.filterObj;
+  }
     const page=req.query.page*1 || 1;
     const limit=req.query.limit*1 ||5;
     const skip=(page-1)*limit;
-    const videos = await videomodel.find({}).skip(skip).limit(limit);
+    const videos = await videomodel.find(filter);
     res.status(200).json({results:videos.length,page,data:videos})
   });
+
+  exports.createFilterObj=(req,res,next) => {
+    console.log(req.params)
+       let filterObject={};
+       if(req.params.id_lecons) filterObject ={id_lecons:req.params.id_lecons};
+       req.filterObj =filterObject;
+     next();
+     }
 
 // @desc    Get specific video by id
 // @route   GET api/video/:id

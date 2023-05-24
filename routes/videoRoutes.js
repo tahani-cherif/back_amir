@@ -10,13 +10,13 @@ const {getvideos,
        createvideo,
         getvideo,
         updatevideo,
-        deletevideo,
+        deletevideo,createFilterObj
     }=require('../services/videoSerice');
 
 //mergeParams : allow us to access parameter on other routers
 const router=express.Router({mergeParams: true});
 
-router.route('/').get(getvideos)
+router.route('/').get(createFilterObj,getvideos)
                  .post(createvideoValidator,createvideo);
 
 router.route('/:id').get(getvideoValidator,getvideo)

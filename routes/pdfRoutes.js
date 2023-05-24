@@ -11,13 +11,14 @@ const {getpdfs,
         getpdf,
         updatepdf,
         deletepdf,
+        createFilterObj
     }=require('../services/pdfSerice');
 const {upload}=require('../middlewares/imageMiddmeware')
 
 //mergeParams : allow us to access parameter on other routers
 const router=express.Router({mergeParams: true});
 
-router.route('/').get(getpdfs)
+router.route('/').get(createFilterObj,getpdfs)
                  .post(upload('./pdf').single('file'),createpdfValidator,createpdf);
 
 router.route('/:id').get(getpdfValidator,getpdf)
