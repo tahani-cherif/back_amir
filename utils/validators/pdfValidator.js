@@ -10,6 +10,8 @@ exports.getpdfValidator=[
 exports.createpdfValidator=[
     check('number').notEmpty().withMessage('number required')
                    .isNumeric().withMessage('must be a number'),
+    check('title').notEmpty().withMessage('title required'),
+    check('sub_title').notEmpty().withMessage('sub_title required'),
     check('id_lecons').notEmpty().withMessage('id_lecons required')
                          .isMongoId().withMessage('Invalid lecons id ')
                          .custom((leconsId) =>

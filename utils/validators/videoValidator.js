@@ -13,6 +13,8 @@ exports.createvideoValidator=[
     check('time').notEmpty().withMessage('time required')
                    .isNumeric().withMessage('must be a number'),
     check('url').notEmpty().withMessage('name required'),
+    check('title').notEmpty().withMessage('title required'),
+    check('sub_title').notEmpty().withMessage('sub_title required'),
     check('id_lecons').notEmpty().withMessage('id_lecons required')
                          .isMongoId().withMessage('Invalid lecons id ')
                          .custom((leconsId) =>
