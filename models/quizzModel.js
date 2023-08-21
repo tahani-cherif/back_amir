@@ -2,17 +2,13 @@ const  mongoose=require('mongoose');
 
 const quizzShema=new mongoose.Schema(
     {
+        nom_quiz:{
+            type:String,
+            require:[true,'nom_quiz require']
+        },
         question:{
             type:Object,
             require:[true,'question require']
-        },
-        option:[{
-            type:String,
-            require:[true,'option require']
-        }],
-        correctanswer:{
-            type:String,
-            require:[true,'correctanswer  require']
         },
         id_cour:{
             type:mongoose.Schema.ObjectId,
