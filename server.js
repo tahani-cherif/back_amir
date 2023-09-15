@@ -15,17 +15,20 @@ const videoRoutes=require('./routes/videoRoutes')
 const quizzRoutes=require('./routes/quizzRoutes')
 const sessionEleveRoutes=require('./routes/sessionEleveRoutes')
 const pdfRoutes=require('./routes/pdfRoutes')
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-const passport = require('passport');
+const chatRoutes = require("./routes/chatRoutes");
+const messageRoutes = require("./routes/messageRoutes");
+const cors = require("cors");
 const session=require('express-session');
 var http = require("http");
-const app=express()
+const c = require('ansi-colors');
+const { Console } = require('console');
 
+const app = express();
 
-var server = http.createServer(app);
-var io = require("socket.io")(server);
+// Json and Cors Middlewares
+app.use(cors());
 app.use(express.json());
+
 
 //connection database
 config_data()
@@ -40,46 +43,7 @@ if(process.env.NODE_ENV === 'dev')
     app.use(morgan('dev'));
     console.log(`mode:${process.env.NODE_ENV}`);
 }
-// auth with google
-// passport.use(new GoogleStrategy({
-//     clientID: process.env.GOOGLE_CLIENT_ID,
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://www.example.com/auth/google/callback"
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ));
-// app.get('/auth/google',
-//   passport.authenticate('google', { scope: ['email profile'] }),
-//   function(req, res) {
-//   console.log("appppppp")
-//   });
 
-// app.get('/auth/google/callback',
-//   passport.authenticate('google', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     // Authenticated successfully
-//     res.redirect('/');
-//   });
-//   passport.use(new FacebookStrategy({
-//     clientID: process.env.GOOGLE_CLIENT_ID,
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://www.example.com/auth/google/callback",
-//     profileFields:['id', 'name', 'displayname','email']
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ));
-// auth with facebook
-//  app.use(passport.initialize());
-//  app.use(passport.session());
-//  app.use(session({secret: 'thisissecretkey'}));
  
 //route
 app.use('/api/users',userRoutes);
@@ -92,6 +56,10 @@ app.use('/api/videos',videoRoutes);
 app.use('/api/quizzs',quizzRoutes);
 app.use('/api/sessionEleves',sessionEleveRoutes);
 app.use('/api/pdfs',pdfRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
+
 app.get('/',(req,res) => {res.send('route API')});
 //static Images Folder
 
@@ -112,23 +80,68 @@ app.all("*",(req,res,next)=>{
 
 // Global error handling middleware for express
 app.use(globalError);
-const PORT=process.env.PORT || 8000;
-server.listen(PORT, "0.0.0.0", () => {
-    console.log("server started");
+const PORT=process.env.PORT || 3000;
+
+// Listen to Server (Socket)
+
+const server = app.listen(
+  PORT,
+  console.log(c.yellow(`Server running on PORT ${PORT}...`))
+);
+
+const io = require("socket.io")(server, {
+  pingTimeout: 60000,
+  cors: {
+    origin: "http://localhost:3000",
+    // credentials: true,
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("Connected to socket.io");
+  socket.on("setup", (userData) => {
+    var user = JSON.parse(userData);
+    
+console.log(user);
+    socket.join(JSON.parse(user)._id );
+    socket.emit("connected");
+    console.log("setup for: " + JSON.parse(user)._id);
+
   });
-  global.onlineUsers = new Map();
-  io.on("connection", (socket) => {
-    global.chatSocket = socket;
-    socket.on("add-user", (userId) => {
-      onlineUsers.set(userId, socket.id);
+
+  socket.on("join chat", (room) => {
+    socket.join(room);
+    console.log("User Joined Room: " + room);
+  });
+  socket.on('typing', () => {
+    // Broadcast the typing event to all other clients except the sender
+    socket.broadcast.emit('typing');
+  });
+
+  socket.on('stop typing', () => {
+    // Broadcast the stop typing event to all other clients except the sender
+    socket.broadcast.emit('stop typing');
+  });
+  // socket.on("typing", (room) => socket.in(room).emit("typing"));
+  // socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
+
+  socket.on("new message", (newMessageRecieved) => {
+    var chat = newMessageRecieved.chat;
+
+    if (!chat.users) return console.log("chat.users not defined");
+
+    chat.users.forEach((user) => {
+      if (user._id == newMessageRecieved.sender._id) return;
+
+      socket.in(user._id).emit("message recieved", newMessageRecieved);
     });
-  
-    socket.on("send-msg", (data) => {
-      const sendUserSocket = onlineUsers.get(data.to);
-      if (sendUserSocket) {
-        socket.to(sendUserSocket).emit("msg-recieve", data.msg);
-      }
-    });});
+  });
+
+  socket.off("setup", () => {
+    console.log("USER DISCONNECTED");
+    socket.leave(JSON.parse(user)._id);
+  });});
+
 // error handling Rejection outside express
 process.on("unhandledRejection",(err=>{
     console.error(`UnhandledRejection Errors: ${err.name} | ${err.message}`);
@@ -136,4 +149,5 @@ process.on("unhandledRejection",(err=>{
        console.log('shutting down....')
        process.exit(1);})
   
-}));
+}
+));

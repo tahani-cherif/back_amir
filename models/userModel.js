@@ -40,5 +40,5 @@ userShema.pre("save",async function(next){
     this.password = await bcrypt.hash(this.password,12);
     next();
 })
-const User=mongoose.model('user',userShema);
+const User=mongoose.model('User',userShema);
 module.exports=User;
